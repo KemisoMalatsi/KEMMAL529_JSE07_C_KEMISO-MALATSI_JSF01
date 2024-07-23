@@ -1,0 +1,11 @@
+<div x-data="productListComponent()" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <template x-for="product in products" :key="product.id">
+      <div class="border p-4">
+        <img :src="product.image" alt="product.title" class="w-full h-48 object-cover mb-2">
+        <h3 class="text-lg font-semibold" x-text="product.title"></h3>
+        <p class="text-gray-500" x-text="product.description"></p>
+        <p class="text-green-500 font-bold" x-text="'$' + product.price"></p>
+      </div>
+    </template>
+  </div>
+  
