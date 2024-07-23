@@ -137,7 +137,7 @@
       <!-- Sort Dropdown -->
       <div class="flex sm:w-[95%] max-w-[21rem] md:w-full mt-4 sm:mt-0">
         <label htmlFor="sort" class="w-20 my-auto font-semibold">
-          
+          Sort by:
         </label>
         <select
           id="sort"
@@ -165,16 +165,42 @@
             class="w-full h-64 object-contain"
           />
           <div class="p-4">
-            <h3 
-              class="text-lg font-semibold text-gray-900 mb-2 truncate"
-              x-text="product.title"
-            ></h3>
+            <div class="flex justify-between items-center">
+              <h3 
+                class="text-lg font-semibold text-gray-900 mb-2 truncate"
+                x-text="product.title"
+              ></h3>
+              <svg
+                class="me-1.5 h-5 w-5 hover:fill-red-500 cursor-pointer"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+                transform="scale(1.6)"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19.5 12.5a7 7 0 0 1-14 0C5.5 8.825 8.325 6 12 6s6.5 2.825 6.5 6.5z"
+                />
+              </svg>
+            </div>
             <p 
               class="text-green-400 font-semibold"
               x-text="'$' + product.price.toFixed(2)"
             ></p>
             <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10" x-text="product.category"></span>
           </div>
+          <button
+            class="inline-flex justify-center whitespace-nowrap rounded-lg bg-cyan-700 px-3 py-2 text-sm font-medium text-white hover:bg-cyan-900 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 transition-colors"
+            @click="addToCart(product)"
+          >
+            Add To Cart
+          </button>
         </div>
       </template>
     </div>
