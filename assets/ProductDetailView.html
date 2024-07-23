@@ -1,0 +1,34 @@
+<div x-data="productDetailView()" class="container mx-auto p-4">
+    <template x-if="product">
+      <div>
+        <img :src="product.image" alt="product.title" class="w-full h-64 object-cover mb-4">
+        <h2 class="text-2xl font-bold" x-text="product.title"></h2>
+        <p class="text-gray-500 mb-4" x-text="product.description"></p>
+        <p class="text-green-500 font-bold text-xl" x-text="'$' + product.price"></p>
+      </div>
+    </template>
+    <template x-if="!product">
+      <p>Product not found</p>
+    </template>
+  </div>
+  
+  <script>
+  function productDetailView() {
+    return {
+      product: null,
+      fetchProduct(productId) {
+        fetch(`https://fakestoreapi.com/products/${productId}`)
+          .then(response => response.json())
+          .then(data => this.product = data);
+      },
+      init() {
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('id');
+        if (productId) {
+          this.fetchProduct(productId);
+        }
+      }
+    };
+  }
+  </script>
+  
